@@ -58,7 +58,7 @@ db.coDefine, db.coExecQuery
 Model.coCreate, Model.coGet, Model.coOne, Model.coAll, Model.coCount, Model.coHasOne, Model.coHasMany,Model.coRun
 instance.coSave, instance.coRemove, instance.coValidate
 
-
+#other#
 use [Pagination](http://dresende.github.io/node-orm-paging/)
 
 ```
