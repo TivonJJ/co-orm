@@ -1,0 +1,41 @@
+{
+  "author": {
+    "name": "Rafael Kaufmann",
+    "email": "rafael.kaufmann@resolveai.com.br"
+  },
+  "name": "q-orm",
+  "description": "Promise-based wrapper for node-orm2",
+  "keywords": [
+    "orm",
+    "q",
+    "promise"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaelkaufmann/q-orm.git"
+  },
+  "main": "./lib/q-orm",
+  "engines": {
+    "node": "*"
+  },
+  "analyse": false,
+  "dependencies": {
+    "q": "",
+    "qx": "",
+    "orm": ""
+  },
+  "readmeFilename": "README.md",
+  "readme": "## Promise-based wrapper for node-orm2\n\nThis lib supplies promise-returning methods for your habitual node-orm2 objects:\n\n```js\nvar orm = require('orm');\nvar qOrm = require('q-orm');\n\nreturn qOrm.qConnect('mysql://username:password@host/database')\n.then(function (db) {\n\n\tvar Person = db.qDefine(\"person\", {\n\t\tname      : String,\n\t\tsurname   : String,\n\t\tage       : Number,\n\t\tmale      : Boolean,\n\t\tcontinent : [ \"Europe\", \"America\", \"Asia\", \"Africa\", \"Australia\", \"Antartica\" ], // ENUM type\n\t\tphoto     : Buffer, // BLOB/BINARY\n\t\tdata      : Object // JSON encoded\n\t}, {\n\t\tmethods: {\n\t\t\tfullName: function () {\n\t\t\t\treturn this.name + ' ' + this.surname;\n\t\t\t}\n\t\t},\n\t\tvalidations: {\n\t\t\tage: orm.enforce.ranges.number(18, undefined, \"under-age\")\n\t\t}\n\t});\n\n\treturn Person.qAll({ surname: \"Doe\" })\n\t.then(function (people) {\n\t\t// SQL: \"SELECT * FROM person WHERE surname = 'Doe'\"\n\n\t\tconsole.log(\"People found: %d\", people.length);\n\t\tconsole.log(\"First person: %s, age %d\", people[0].fullName(), people[0].age);\n\n\t\tpeople[0].age = 16;\n\t\treturn people[0].qSave()\n\t\t.fail(function (err) {\n\t\t\tconsole.log(err.stack);\n\t\t});\n\t});\n})\n.fail(function (err) {\n\tthrow err;\n});\n```\n\n##Supported methods\n\n- `qOrm.qConnect`\n- `db.qDefine, db.qExecQuery`\n- `Model.qCreate, Model.qGet, Model.qOne, Model.qAll, Model.qCount, Model.qHasOne, Model.qHasMany`\n- `instance.qSave, instance.qRemove, instance.qValidate`\n- `instance.qGetAssociatedModel`, etc.\n\n##Notes\n\n- All methods inherit their habitual parameters from their callback-based counterparts. (Behind the scenes, we use `Q.nbind`.)\n- This is very beta! Works on my application (it's been tested extensively in there), but does not have its own unit tests yet.\n- Features such as `orm.enforce`, `orm.eq`, etc. are not wrapped. If you need them (such as in the example), you have to `require('orm')` as well.\n\n##TODO\n\n- Tests\n- More examples\n- Better README",
+  "bugs": {
+    "url": "https://github.com/rafaelkaufmann/q-orm/issues"
+  },
+  "homepage": "https://github.com/rafaelkaufmann/q-orm",
+  "_id": "q-orm@0.0.1",
+  "dist": {
+    "shasum": "caaa15199c158cbbf5b1f636586dda3cdabfa411"
+  },
+  "_from": "q-orm@",
+  "_resolved": "https://registry.npmjs.org/q-orm/-/q-orm-0.0.1.tgz"
+}
