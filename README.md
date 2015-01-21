@@ -39,7 +39,7 @@ function demo(db){
 
 	var jack = yield Person.coFind({name:"jack"});
 	jack.name = "new name";
-	yield jacke.coSave();
+	yield jack.coSave();
 	
 	yield Person.find({male:true}).order("id").offset(1).coRun();
 
@@ -57,6 +57,8 @@ coOrm.coConnect
 db.coDefine, db.coExecQuery
 Model.coCreate, Model.coGet, Model.coOne, Model.coAll, Model.coCount, Model.coHasOne, Model.coHasMany,Model.coRun
 instance.coSave, instance.coRemove, instance.coValidate
+
+> more ORM2 API [https://github.com/dresende/node-orm2](https://github.com/dresende/node-orm2)
 
 #other#
 use [Pagination](http://dresende.github.io/node-orm-paging/)
