@@ -10,7 +10,7 @@
     "co-orm",
     "co-orm2"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
     "node": "*"
   },
   "dependencies": {
-    "orm": "^2.1.22",
     "thunkify": "^2.1.2"
   },
   "readmeFilename": "README.md",
