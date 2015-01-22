@@ -55,7 +55,7 @@ function demo(db){
 
 coOrm.coConnect
 db.coDefine, db.coExecQuery
-Model.coCreate, Model.coGet, Model.coOne, Model.coAll, Model.coCount, Model.coHasOne, Model.coHasMany,Model.coRun
+Model.coCreate, Model.coGet, Model.coOne, Model.coAll, Model.coCount, Model.coHasOne, Model.coHasMany,Model.coRun,Model.coFind
 instance.coSave, instance.coRemove, instance.coValidate
 
 > more ORM2 API [https://github.com/dresende/node-orm2](https://github.com/dresende/node-orm2)
