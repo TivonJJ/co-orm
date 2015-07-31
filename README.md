@@ -1,3 +1,7 @@
+
+> Recommend a better framework [‘sequelize’](https://github.com/sequelize/sequelize);
+> Based promise,you can use yiled or callback，Quick update, quick reply，Strongly recommended!
+
 # co-orm
 co-based wrapper for node-orm2
 
